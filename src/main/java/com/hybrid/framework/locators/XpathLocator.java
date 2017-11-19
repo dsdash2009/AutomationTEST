@@ -11,11 +11,10 @@ public class XpathLocator {
 	public static WebElement getXpathElement(String xpath){
 		
 		try{
-		WebDriverWait Ww = new WebDriverWait(driver, 45);
+		WebDriverWait Ww = new WebDriverWait(driver, 10);
 		
 		return Ww.until(ExpectedConditions.visibilityOfElementLocated(((By.xpath(xpath)))));
 		}catch(Exception e){
-			
 			
 		}
 		return null;

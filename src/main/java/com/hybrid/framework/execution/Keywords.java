@@ -35,7 +35,6 @@ public class Keywords {
 		case "click":
 			try{
 				
-	
 			getXpathElement(xpath).click();
 			endTimes = sdf.format(new Date().getTime());
 			
@@ -63,7 +62,7 @@ public class Keywords {
 			setReports("objects", 9, statusRow, "Pass");
 			setReports("objects", 12, reportStatus, "Elements entered");
 			setReports("objects", 11, reportStatus, getCurrentTime(startTimes, endTimes));
-
+			
 
 			}catch (Exception e) {
 				endTimes = sdf.format(new Date().getTime());
@@ -92,9 +91,6 @@ public class Keywords {
 			setReports("objects", 12, reportStatus, "Content matched");
 			setReports("objects", 11, reportStatus, getCurrentTime(startTimes, endTimes));
 
-			
-
-			
 			}else 
 			{
 			
@@ -104,7 +100,8 @@ public class Keywords {
 			setReports("objects", 7, statusRow, actual);
 			setReports("objects", 12, reportStatus, "Contents mismatched");		
 			setReports("objects", 11, reportStatus, getCurrentTime(startTimes, endTimes));
-
+			setReports("objects", 10, reportStatus,getScreenshot(xpath) );
+			
 			}
 			break;
 		

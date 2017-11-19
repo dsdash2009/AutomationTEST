@@ -8,6 +8,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
@@ -23,18 +25,20 @@ import com.hybrid.framework.execution.Parameterization;
 
 public class Screenshot {
 	
-	public static String screenPath = "Screenshots\\";
-	public static UUID dynamic;
-	public static String filePath;
-	
-	
-	public static String getScreenshot(String xpath) throws IOException{
+	public static String screenPath = System.getProperty("user.dir")+"/src/main/resources/screenshots/";
 		
+	
+	public static String getScreenshot(String xpath) throws IOException{   
+		//get the fullpage screenshot
+		Calendar calendar= Calendar.getInstance();
+		SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
+		String actualImageName = screenPath+Parameterization.testCaseID+"_"+formater.format(calendar.getTime())+".png";
 		
-		WebElement autoCapt = driver.findElement(By.xpath(xpath));   
-		//Get entire page screenshot
+		//Focus on the specific web element
+		WebElement autoCapt = driver.findElement(By.xpath(xpath)); 
 		File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		BufferedImage bi = ImageIO.read(screenshot);
+		
 		//Get the location of element on the page
 		Point p = autoCapt.getLocation();
 		bi.getTransparency();
@@ -47,14 +51,18 @@ public class Screenshot {
 		g.setColor(Color.RED.brighter());
 		g.dispose();
 		ImageIO.write(bi, "png", screenshot);
-		//Copy the element screenshot to disk
-		File newFile = new File(screenPath + Parameterization.testCaseID + ".png");
-		FileUtils.copyFile(screenshot, newFile );
-		filePath=newFile.getAbsolutePath();
-		return filePath;
 		
+		//copy file to disc
+		File destFile = new File(actualImageName);
+		try {
+			FileUtils.copyFile(screenshot, destFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return actualImageName;
 		
 	}
+	
 	
 	
 

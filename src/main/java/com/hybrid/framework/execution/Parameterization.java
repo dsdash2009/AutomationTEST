@@ -118,7 +118,6 @@ public static void exit() throws  IOException{
 
 public static void main(String[] args) throws IOException  {
 	
-	//Filepath="Test-input/" + args[0];
 	Browser();
 	run();
     exit();
