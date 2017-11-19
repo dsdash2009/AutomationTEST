@@ -34,7 +34,6 @@ public class Reports {
 		fos=new FileOutputStream(setwbook.getSheet(sheetName).getSheetName());
 		setwbook.write(fos);
 		System.out.println("File written susseccfully ");
-		System.out.println(setwbook.getActiveSheetIndex());
 		}
 		catch(Exception e){
 			e.printStackTrace();
