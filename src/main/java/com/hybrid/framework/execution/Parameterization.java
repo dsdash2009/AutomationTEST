@@ -108,7 +108,6 @@ a++;
 }
 
 public static void exit() throws  IOException{
-	wbook.close();
 	driver.quit();
 	System.out.println("******Testcases Completed******");
 	

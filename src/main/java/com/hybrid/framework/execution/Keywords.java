@@ -39,9 +39,6 @@ public class Keywords {
 			getXpathElement(xpath).click();
 			endTimes = sdf.format(new Date().getTime());
 			
-			System.out.println(statusRow);
-			System.out.println(reportStatus);
-			
 			setReports("objects", 9, statusRow, "Pass");	
 			setReports("objects", 12, reportStatus, "Element clicked");
 			setReports("objects", 11, reportStatus, getCurrentTime(startTimes, endTimes));
@@ -53,7 +50,6 @@ public class Keywords {
 				setReports("objects", 12, reportStatus, "Element not clicked");
 				setReports("objects", 11, reportStatus, getCurrentTime(startTimes, endTimes));
 
-				
 			}
 			
 			break;

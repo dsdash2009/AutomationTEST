@@ -39,7 +39,10 @@ public class Reports {
 			e.printStackTrace();
 		}
 	finally{
+		System.out.println(xlData);
+		fos.flush();
 		fos.close();
+		setwbook.close();
 	}
 		
 	}	
