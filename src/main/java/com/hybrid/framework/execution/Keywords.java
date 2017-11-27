@@ -19,9 +19,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class Keywords {
-	
-
-	
+		
 	public static void keyword(String actionContent,String xpath,String value, String expected, int statusRow, int reportStatus) throws IOException{
 		
 		String startTimes = sdf.format(new Date().getTime());
